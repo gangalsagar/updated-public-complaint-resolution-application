@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#060a13">
+    <title>UrbanVoice | Complaint Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Ionicons for icons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body>
+
+    <!-- Background Elements -->
+    <div class="background-orb orb-1"></div>
+    <div class="background-orb orb-2"></div>
+    <div class="background-orb orb-3"></div>
+    <div class="grid-overlay"></div>
+
+    <!-- Login View -->
+    <section id="login-view" class="view active">
+
+        <!-- Top Logo Bar -->
+        <header class="login-topbar">
+            <div class="login-logo">
+                <div class="login-logo-icon">
+                    <ion-icon name="flag-outline"></ion-icon>
+                </div>
+                <span>Urban<strong>Voice</strong></span>
+            </div>
+        </header>
+
+        <!-- Two-Panel Body -->
+        <div class="login-body">
+
+            <!-- Left: Brand Panel -->
+            <div class="login-brand">
+                <div class="login-brand-inner">
+                    <h2>Your Voice,<br>Our Priority</h2>
+                    <p>File complaints, track progress, and see real change in your city through our transparent public
+                        redressal platform.</p>
+                    <ul class="login-features">
+                        <li><ion-icon name="checkmark-circle-outline"></ion-icon> Instant complaint registration</li>
+                        <li><ion-icon name="checkmark-circle-outline"></ion-icon> Real-time status tracking</li>
+                        <li><ion-icon name="checkmark-circle-outline"></ion-icon> Direct ministry assignment</li>
+                        <li><ion-icon name="checkmark-circle-outline"></ion-icon> Secure &amp; transparent process</li>
+                    </ul>
+                </div>
+                <!-- Decorative circles -->
+                <div class="brand-orb brand-orb-1"></div>
+                <div class="brand-orb brand-orb-2"></div>
+            </div>
+
+            <!-- Right: Form Panel -->
+            <div class="login-form-panel">
+                <div class="login-form-box">
+                    <div class="login-form-header">
+                        <h3>Login Details</h3>
+                        <p>Public Redressal System</p>
+                    </div>
+
+                    <form id="login-form">
+
+                        <!-- Full Name -->
+                        <div class="input-group">
+                            <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
+                            <input type="text" id="login-name" placeholder="Full Name" required>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="input-group">
+                            <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
+                            <input type="email" id="login-gmail" placeholder="Email ID" required>
+                        </div>
+
+                        <!-- Mobile -->
+                        <div class="input-group">
+                            <span class="icon"><ion-icon name="call-outline"></ion-icon></span>
+                            <input type="tel" id="login-phone" placeholder="Mobile Number" required>
+                        </div>
+
+                        <!-- State + District -->
+                        <div class="login-row">
+                            <div class="input-group">
+                                <input type="text" id="login-state" placeholder="State" required>
+                            </div>
+                            <div class="input-group">
+                                <input type="text" id="login-district" placeholder="District" required>
+                            </div>
+                        </div>
+
+                        <!-- Aadhar + Age -->
+                        <div class="login-row">
+                            <div class="input-group">
+                                <input type="text" id="login-aadhar" placeholder="Aadhar Number" maxlength="12"
+                                    required>
+                            </div>
+                            <div class="input-group">
+                                <input type="number" id="login-age" placeholder="Age (> 15)" min="16" max="120"
+                                    required>
+                            </div>
+                        </div>
+
+                        <!-- OTP -->
+                        <div class="input-group">
+                            <span class="icon"><ion-icon name="keypad-outline"></ion-icon></span>
+                            <input type="text" id="login-otp" placeholder="Enter OTP (Mock: 1234)" required
+                                maxlength="6">
+                        </div>
+
+                        <button type="submit" class="btn-primary full-width">
+                            <span class="btn-text">Login</span>
+                            <ion-icon name="arrow-forward-outline"></ion-icon>
+                        </button>
+                    </form>
+                </div>
+            </div><!-- /login-form-panel -->
+
+        </div><!-- /login-body -->
+    </section>
+
+    <!-- Dashboard View -->
+    <section id="dashboard-view" class="view hidden">
+
+        <!-- Top Header -->
+        <header class="glass-header">
+            <div class="header-content">
+                <div class="header-logo">
+                    <div class="header-logo-icon">
+                        <ion-icon name="flag-outline"></ion-icon>
+                    </div>
+                    <span>Urban<strong>Voice</strong></span>
+                </div>
+                <div class="header-actions">
+                    <span id="header-username" class="header-user"></span>
+                    <button id="logout-btn" class="btn-icon" title="Logout">
+                        <ion-icon name="log-out-outline"></ion-icon>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="container">
+
+            <!-- Complaint Form Card -->
+            <div class="form-card">
+                <div class="card-header">
+                    <h3>File a Complaint</h3>
+                    <p>Submit your grievance — it will be assigned to the relevant ministry.</p>
+                </div>
+
+                <form id="complaint-form">
+
+                    <!-- Row 1: Name + Phone -->
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label>Full Name *</label>
+                            <input type="text" id="user-name" required placeholder="Your full name">
+                        </div>
+                        <div class="input-group">
+                            <label>Mobile Number *</label>
+                            <input type="tel" id="user-phone" required placeholder="Verified number" readonly>
+                        </div>
+                    </div>
+
+                    <!-- Address -->
+                    <div class="input-group">
+                        <label>Address</label>
+                        <textarea id="user-address" placeholder="Your full address" rows="2"></textarea>
+                    </div>
+
+                    <!-- Complaint Details -->
+                    <div class="input-group">
+                        <label>Complaint Details *</label>
+                        <textarea id="user-complaint" required placeholder="Describe your issue in detail..."
+                            rows="4"></textarea>
+                    </div>
+
+                    <!-- Uploads Row -->
+                    <div class="form-row">
+                        <!-- Image Upload -->
+                        <div class="media-section">
+                            <label class="section-label">Upload Images</label>
+                            <div class="file-upload-wrapper">
+                                <input type="file" id="image-files" multiple accept="image/*">
+                                <div class="upload-trigger">
+                                    <ion-icon name="image-outline"></ion-icon>
+                                    <span>Click to Upload Images</span>
+                                    <small>JPG, PNG, WEBP — Max 10 MB each</small>
+                                </div>
+                                <div id="image-file-list" class="file-list"></div>
+                            </div>
+                        </div>
+
+                        <!-- Video Upload -->
+                        <div class="media-section">
+                            <label class="section-label">Upload Videos</label>
+                            <div class="file-upload-wrapper">
+                                <input type="file" id="video-files" multiple accept="video/*">
+                                <div class="upload-trigger">
+                                    <ion-icon name="videocam-outline"></ion-icon>
+                                    <span>Click to Upload Videos</span>
+                                    <small>MP4, MOV, AVI — Max 50 MB each</small>
+                                </div>
+                                <div id="video-file-list" class="file-list"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Submit -->
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary full-width">
+                            <span class="btn-text">Submit Complaint</span>
+                            <div class="loader" style="display:none;"></div>
+                        </button>
+                        <div id="responseMessage"
+                            style="display:none; margin-top: var(--space-lg); padding: var(--space-lg); background: var(--success-50); border: 1px solid rgba(16,185,129,0.2); border-radius: var(--radius-md); text-align: center;">
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+            <!-- Track Complaint Card -->
+            <div class="track-card">
+                <div class="card-header">
+                    <h3>Track Complaint</h3>
+                    <p>Enter your Registration ID to check the current status.</p>
+                </div>
+                <div class="track-row">
+                    <input type="text" id="track-registration-id"
+                        placeholder="Enter Registration ID (e.g. 20260227184137-VFKFI6)">
+                    <button type="button" id="track-btn" class="btn-primary">
+                        <ion-icon name="search-outline"></ion-icon>
+                        Track
+                    </button>
+                </div>
+            </div>
+
+        </main>
+    </section>
+
+
+    <!-- Notification Toast -->
+    <div id="toast" class="toast hidden"></div>
+
+    <!-- Status Modal -->
+    <div id="status-modal" class="modal hidden">
+        <div class="modal-content glass-card">
+            <div class="modal-header">
+                <h3>Complaint Status</h3>
+                <button id="close-modal-btn" class="btn-icon">
+                    <ion-icon name="close-outline"></ion-icon>
+                </button>
+            </div>
+            <div id="status-body" class="modal-body">
+                <!-- Status content will be injected here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
